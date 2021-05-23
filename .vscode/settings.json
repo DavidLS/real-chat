@@ -7,12 +7,12 @@
     "javascript",
     "javascriptreact",
   ],
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": false,
   "eslint.alwaysShowStatus": true,
   "editor.insertSpaces": true,
   "editor.tabSize": 2,
   "editor.detectIndentation": false,
   "cSpell.words": [
-    "Basepaws"
+    "apos"
   ]
 }

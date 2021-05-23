@@ -1,25 +1,34 @@
 import React, { useState } from 'react'
 
 import Login from './Login/Login'
+import Chat from './Chat/Chat'
 const App = () => {
-  const [userName, setUserName] = useState('')
+  const [userName, setUserName] = useState('David')
+  const [inChat, setInChat] = useState(true)
 
   const handleChange = (newValue) => {
     setUserName(newValue)
   }
 
   const handleSubmit = () => {
+    setInChat(true)
     console.log(`Submitted with name ${userName}`)
   }
 
   return (
     <>
-      <Login
-        handleChange={handleChange}
-        handleSubmit={handleSubmit}
-        value={userName}
-        placeholder="Enter your username"
-      />
+      {inChat
+        ? <Chat
+            userName={userName}
+          />
+        : <Login
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+            value={userName}
+            placeholder="Enter your username"
+        />
+      }
+
     </>
   )
 }

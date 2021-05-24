@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 
 const MessageForm = (props) => {
-  const [buttonDisabled, setButtonDisabled] = useState(true)
   const [value, setValue] = useState('')
+  const buttonDisabled = !value
   return (
     <form
       onSubmit={(event) => {
@@ -10,6 +10,7 @@ const MessageForm = (props) => {
         const message = event.target[0].value
         props.handleMessage(message)
         setValue('')
+        props.handleTyping(false)
       }}
     >
       <input
@@ -19,7 +20,6 @@ const MessageForm = (props) => {
             const message = event.target.value
             setValue(message)
             if (/^(.|\s)*\S(.|\s)*$/.test(message)) { // empty - only spaces
-              setButtonDisabled(false)
               props.handleTyping(true)
             } else {
               props.handleTyping(false)

@@ -29,9 +29,9 @@ const Chat = (props) => {
 
       socketRef.current.on('is-typing', typersRaw => {
         const typersAux = Object.entries(typersRaw)
-          .filter((typer) => typer[1])
+          .filter((typer) => typer[1] && typer[0] !== props.userName)
           .map((typer) => typer[0])
-        setTypers(() => typersAux)
+        setTypers(typersAux)
       })
     },
     [])

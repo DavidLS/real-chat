@@ -1,27 +1,28 @@
 import React from 'react'
-import Message from '../Message/Message'
+import MessageBlock from '../MessageBlock/MessageBlock'
 
 const List = (props) => {
   return (
     <>
-      <Message
-        user="Jim Snow"
+      <MessageBlock
+        user="John Snow"
         time="9:30 am"
       >
-        So, what&apos;s everyone&apos;s weekend plans looking like?
-      </Message>
-      <Message
-        user="Jim Snow"
+        Message 01A
+        Message 01B
+      </MessageBlock>
+      <MessageBlock
+        user="Jack Black"
         time="9:30 am"
       >
-        So, what&apos;s everyone&apos;s weekend plans looking like?
-      </Message>
-      <Message
-        user="Jim Snow"
+        Message 02
+      </MessageBlock>
+      <MessageBlock
+        user="John Snow"
         time="9:30 am"
       >
-        So, what&apos;s everyone&apos;s weekend plans looking like?
-      </Message>
+        Message 03
+      </MessageBlock>
     </>
   )
 }

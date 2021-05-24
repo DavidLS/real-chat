@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Message = (props) => {
+const MessageBlock = (props) => {
   return (
     <div>
       {props.name} said {props.children}
@@ -8,4 +8,4 @@ const Message = (props) => {
   )
 }
 
-export default Message
+export default MessageBlock

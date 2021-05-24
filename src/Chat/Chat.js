@@ -33,8 +33,17 @@ const Chat = ({ userName }) => {
           .map((typer) => typer[0])
         setTypers(typersAux)
       })
+
+      window.addEventListener('beforeunload', emitTypingStopped)
+      return () => {
+        window.removeEventListener('beforeunload', emitTypingStopped)
+      }
     },
     [])
+
+  const emitTypingStopped = () => {
+    socketRef.current.emit('typing', false)
+  }
 
   const handleSendMessage = (message) => {
     socketRef.current.emit('text-message', message)

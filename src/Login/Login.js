@@ -9,11 +9,7 @@ const Login = ({ handleChange, handleSubmit, placeholder, value }) => {
         event.preventDefault()
         setError(false)
         const value = event.target[0].value
-        if (value.trim()) { // empty - only spaces
-          handleSubmit(value)
-        } else {
-          setError(true)
-        }
+        handleSubmit(value.trim())
       }}
     >
       <label>

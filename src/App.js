@@ -6,13 +6,9 @@ const App = () => {
   const [userName, setUserName] = useState('')
   const [inChat, setInChat] = useState(false)
 
-  const handleChange = (newValue) => {
-    setUserName(newValue)
-  }
+  const handleChange = (newValue) => setUserName(newValue)
 
-  const handleSubmit = () => {
-    setInChat(true)
-  }
+  const handleSubmit = () => setInChat(true)
 
   return (
     <>

@@ -35,9 +35,8 @@ const Chat = ({ userName }) => {
       })
 
       window.addEventListener('beforeunload', emitTypingStopped)
-      return () => {
-        window.removeEventListener('beforeunload', emitTypingStopped)
-      }
+
+      return () => window.removeEventListener('beforeunload', emitTypingStopped)
     },
     [])
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 import socketClient from 'socket.io-client'
 
@@ -7,32 +7,41 @@ import MessageForm from './MessageForm/MessageForm'
 
 const Chat = (props) => {
   const [messages, setMessages] = useState([])
-
-  const API_URL = `https://pager-hiring.herokuapp.com/?username=${props.userName}`
-  const socket = socketClient(API_URL)
-
-  socket.on('user-disconnected', username => {
-    console.log(`${username} is disconnected`)
-  })
+  const [typers, setTypers] = useState([])
+  const socketRef = useRef()
 
   useEffect(
     () => {
-      socket.on('message', message => {
+      const API_URL = `https://pager-hiring.herokuapp.com/?username=${props.userName}`
+      socketRef.current = socketClient(API_URL)
+
+      socketRef.current.on('user-disconnected', username => {
+        console.log(`${username} is disconnected`)
+      })
+
+      socketRef.current.on('message', message => {
         setMessages(messages => [...messages, message])
       })
 
-      socket.on('user-connected', username => {
+      socketRef.current.on('user-connected', username => {
         console.log(`${username} is connected`)
+      })
+
+      socketRef.current.on('is-typing', typersRaw => {
+        const typersAux = Object.entries(typersRaw)
+          .filter((typer) => typer[1])
+          .map((typer) => typer[0])
+        setTypers(() => typersAux)
       })
     },
     [])
 
   const handleSendMessage = (message) => {
-    socket.emit('text-message', message)
+    socketRef.current.emit('text-message', message)
   }
 
   const handleTyping = (status) => {
-    socket.emit('typing', status)
+    socketRef.current.emit('typing', status)
   }
 
   return (
@@ -46,7 +55,12 @@ const Chat = (props) => {
         handleTyping={handleTyping}
       />
       <div>
-        Message Notification
+        {typers.length < 1
+          ? null
+          : typers.length > 1
+            ? 'People are writing...'
+            : `${typers[0]} is writing...`
+        }
       </div>
     </div>
   )

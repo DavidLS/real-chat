@@ -1,10 +1,10 @@
 import React from 'react'
 import MessageBlock from '../MessageBlock/MessageBlock'
 
-const List = (props) => {
+const List = ({ messages }) => {
   return (
     <>
-      {props.messages.map(
+      {messages.map(
         (message) => {
           return (
             <MessageBlock

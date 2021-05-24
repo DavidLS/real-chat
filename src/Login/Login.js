@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const Login = (props) => {
+const Login = ({ handleChange, handleSubmit, placeholder, value }) => {
   const [error, setError] = useState(false)
 
   return (
@@ -10,7 +10,7 @@ const Login = (props) => {
         setError(false)
         const value = event.target[0].value
         if (/^(.|\s)*\S(.|\s)*$/.test(value)) { // empty - only spaces
-          props.handleSubmit(value)
+          handleSubmit(value)
         } else {
           setError(true)
         }
@@ -19,14 +19,14 @@ const Login = (props) => {
       <label>
         Please enter your username
         <input
-          value={props.value}
+          value={value}
           onChange={
             (event) => {
               setError(false)
-              props.handleChange(event.target.value)
+              handleChange(event.target.value)
             }
           }
-          placeholder={props.placeholder}
+          placeholder={placeholder}
           type="text"
         />
       </label>

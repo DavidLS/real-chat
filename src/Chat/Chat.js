@@ -5,14 +5,14 @@ import socketClient from 'socket.io-client'
 import List from './List/List'
 import MessageForm from './MessageForm/MessageForm'
 
-const Chat = (props) => {
+const Chat = ({ userName }) => {
   const [messages, setMessages] = useState([])
   const [typers, setTypers] = useState([])
   const socketRef = useRef()
 
   useEffect(
     () => {
-      const API_URL = `https://pager-hiring.herokuapp.com/?username=${props.userName}`
+      const API_URL = `https://pager-hiring.herokuapp.com/?username=${userName}`
       socketRef.current = socketClient(API_URL)
 
       socketRef.current.on('user-disconnected', username => {
@@ -29,7 +29,7 @@ const Chat = (props) => {
 
       socketRef.current.on('is-typing', typersRaw => {
         const typersAux = Object.entries(typersRaw)
-          .filter((typer) => typer[1] && typer[0] !== props.userName)
+          .filter((typer) => typer[1] && typer[0] !== userName)
           .map((typer) => typer[0])
         setTypers(typersAux)
       })
@@ -46,7 +46,7 @@ const Chat = (props) => {
 
   return (
     <div>
-      <h1>Hi {props.userName}</h1>
+      <h1>Hi {userName}</h1>
       <List
         messages={messages}
       />

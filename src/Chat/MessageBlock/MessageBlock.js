@@ -1,12 +1,12 @@
 import React from 'react'
 
-const MessageBlock = (props) => {
-  const encodedUri = encodeURI(props.user)
+const MessageBlock = ({ text, user }) => {
+  const encodedUri = encodeURI(user)
   return (
     <div>
-     <img src={`https://ui-avatars.com/api/?name=${encodedUri}`} alt={props.user}
+     <img src={`https://ui-avatars.com/api/?name=${encodedUri}`} alt={user}
       />
-      <strong>{props.user}</strong>: {props.text}
+      <strong>{user}</strong>: {text}
     </div>
   )
 }

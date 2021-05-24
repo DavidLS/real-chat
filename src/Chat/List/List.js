@@ -8,19 +8,19 @@ const List = (props) => {
         user="Jim Snow"
         time="9:30 am"
       >
-        So, what`&apos;`s everyone`&apos;`s weekend plans looking like?
+        So, what&apos;s everyone&apos;s weekend plans looking like?
       </Message>
       <Message
         user="Jim Snow"
         time="9:30 am"
       >
-        So, what`&apos;`s everyone`&apos;`s weekend plans looking like?
+        So, what&apos;s everyone&apos;s weekend plans looking like?
       </Message>
       <Message
         user="Jim Snow"
         time="9:30 am"
       >
-        So, what`&apos;`s everyone`&apos;`s weekend plans looking like?
+        So, what&apos;s everyone&apos;s weekend plans looking like?
       </Message>
     </>
   )

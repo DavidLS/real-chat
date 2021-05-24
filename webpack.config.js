@@ -7,7 +7,6 @@ module.exports = {
     path: path.resolve(__dirname, 'public'),
     filename: 'main.js'
   },
-  target: 'node',
   devServer: {
     port: '9500',
     contentBase: ['./public'],

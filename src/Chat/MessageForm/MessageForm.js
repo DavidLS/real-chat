@@ -8,7 +8,7 @@ const MessageForm = (props) => {
       onSubmit={(event) => {
         event.preventDefault()
         const message = event.target[0].value
-        console.log(`Message: ${message}`)
+        props.handleMessage(message)
         setValue('')
       }}
     >

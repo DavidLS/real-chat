@@ -12,7 +12,6 @@ const App = () => {
 
   const handleSubmit = () => {
     setInChat(true)
-    console.log(`Submitted with name ${userName}`)
   }
 
   return (

@@ -17,9 +17,12 @@ const MessageForm = (props) => {
         onChange={
           (event) => {
             const message = event.target.value
+            setValue(message)
             if (/^(.|\s)*\S(.|\s)*$/.test(message)) { // empty - only spaces
-              setValue(message)
               setButtonDisabled(false)
+              props.handleTyping(true)
+            } else {
+              props.handleTyping(false)
             }
           }
         }

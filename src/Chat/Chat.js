@@ -22,12 +22,17 @@ const Chat = (props) => {
     socket.emit('text-message', message)
   }
 
+  const handleTyping = (status) => {
+    socket.emit('typing', status)
+  }
+
   return (
     <div>
       <h1>Hi {props.userName}</h1>
       <List/>
       <MessageForm
         handleMessage={handleSendMessage}
+        handleTyping={handleTyping}
       />
       <div>
         Message Notification

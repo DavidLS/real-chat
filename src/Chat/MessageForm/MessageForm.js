@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 const MessageForm = ({ handleMessage, handleTyping, placeholder }) => {
   const [value, setValue] = useState('')
-  const buttonDisabled = !value
+  const buttonDisabled = !value.trim()
   return (
     <form
       onSubmit={(event) => {
@@ -19,7 +19,7 @@ const MessageForm = ({ handleMessage, handleTyping, placeholder }) => {
           (event) => {
             const message = event.target.value
             setValue(message)
-            if (/^(.|\s)*\S(.|\s)*$/.test(message)) { // empty - only spaces
+            if (message.trim()) { // empty - only spaces
               handleTyping(true)
             } else {
               handleTyping(false)

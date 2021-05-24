@@ -3,7 +3,7 @@ import React from 'react'
 const MessageBlock = (props) => {
   return (
     <div>
-      {props.name} said {props.children}
+      <strong>{props.user}</strong>: {props.text}
     </div>
   )
 }

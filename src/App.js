@@ -3,8 +3,8 @@ import React, { useState } from 'react'
 import Login from './Login/Login'
 import Chat from './Chat/Chat'
 const App = () => {
-  const [userName, setUserName] = useState('David')
-  const [inChat, setInChat] = useState(true)
+  const [userName, setUserName] = useState('')
+  const [inChat, setInChat] = useState(false)
 
   const handleChange = (newValue) => {
     setUserName(newValue)

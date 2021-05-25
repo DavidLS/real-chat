@@ -6,7 +6,9 @@ const MessageBlock = ({ text, user }) => {
     <div>
      <img src={`https://ui-avatars.com/api/?name=${encodedUri}`} alt={user}
       />
-      <strong>{user}</strong>: {text}
+      <div style={{ whiteSpace: 'pre-line' }}>
+        <strong>{user}</strong>: {text}
+      </div>
     </div>
   )
 }

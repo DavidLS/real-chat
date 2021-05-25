@@ -15,16 +15,22 @@ const Chat = ({ userName }) => {
       const API_URL = `https://pager-hiring.herokuapp.com/?username=${userName}`
       socketRef.current = socketClient(API_URL)
 
-      socketRef.current.on('user-disconnected', username => {
-        console.log(`${username} is disconnected`)
-      })
-
       socketRef.current.on('message', message => {
         setMessages(messages => [...messages, message])
       })
 
+      socketRef.current.on('user-disconnected', username => {
+        const message = {
+          type: 'disconnect',
+          username: username,
+          time: new Date().toISOString(),
+          text: `${username} has disconnected`
+        }
+        setMessages(messages => [...messages, message])
+      })
+
       socketRef.current.on('user-connected', username => {
-        console.log(`${username} is connected`)
+        socketRef.current.emit('text-message', `${username} has joined`)
       })
 
       socketRef.current.on('is-typing', typersRaw => {

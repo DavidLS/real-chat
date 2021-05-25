@@ -3,7 +3,7 @@ import { Popover } from 'react-tiny-popover'
 
 import GiPreviewList from './GiPreviewList/GiPreviewList'
 
-const MessageForm = ({ handleMessage, handleTyping, placeholder }) => {
+const MessageForm = ({ handleSendImage, handleSendText, handleTyping }) => {
   const [value, setValue] = useState('')
   const [isPopoverOpen, setIsPopoverOpen] = useState(false)
   const [query, setQuery] = useState(null)
@@ -33,13 +33,15 @@ const MessageForm = ({ handleMessage, handleTyping, placeholder }) => {
     }
   }
 
-  const handleSubmit = (message, type = 'text', alt = null) => {
-    console.log('[handleSubmit] message')
-    console.log(message)
-    handleMessage({ message: message, type: type, alt: alt })
+  const cleanForm = () => {
     setValue('')
     setQuery('')
     handleTyping(false)
+  }
+
+  const handleImageClick = ({ gif }) => {
+    handleSendImage({ url: gif.images.fixed_height.url, alt: gif.slug })
+    cleanForm()
   }
 
   return (
@@ -47,14 +49,15 @@ const MessageForm = ({ handleMessage, handleTyping, placeholder }) => {
       <form
         onSubmit={(event) => {
           event.preventDefault()
-          handleSubmit(event.target[0].value)
+          handleSendText({ message: event.target[0].value })
+          cleanForm()
         }}
       >
         <textarea
           ref={textAreaRef}
           value={value}
           onChange={handleOnChange}
-          placeholder={placeholder}
+          placeholder="Message"
           type="text"
           autoFocus
           rows={1}
@@ -65,7 +68,7 @@ const MessageForm = ({ handleMessage, handleTyping, placeholder }) => {
         <Popover
           isOpen={isPopoverOpen}
           positions={['top', 'bottom', 'left', 'right']} // preferred positions by priority
-          content={<GiPreviewList handleClick={handleSubmit} query={query}/>}
+          content={<GiPreviewList handleClick={handleImageClick} query={query}/>}
         >
           <button
             type="submit"

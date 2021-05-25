@@ -10,13 +10,6 @@ const GifPreviewBlock = ({ gif }) => {
 }
 
 const GiPreviewList = ({ query, handleClick }) => {
-  const handleClick2 = (gif) => {
-    console.log('[handleClick2] gif')
-    console.log(gif)
-    const objMessage = { message: gif.images.fixed_height.url, type: 'image', alt: gif.slug }
-    handleClick(objMessage)
-  }
-
   useEffect(
     () => {
       async function getGifs () {
@@ -43,8 +36,8 @@ const GiPreviewList = ({ query, handleClick }) => {
       : gifList.map(
         (gif) => <div
                   key={`gif_preview_${gif.id}`}
-                  onClick={() => {
-                    handleClick2(gif)
+                  onClick={(event) => {
+                    handleClick({ event: event, gif: gif })
                   }}
                 >
                   <GifPreviewBlock

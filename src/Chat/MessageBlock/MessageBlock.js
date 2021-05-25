@@ -29,19 +29,20 @@ const MessageBlock = ({ text, time, user, type }) => {
   const timeString = formatTime(time)
 
   let message = null
-  if (type === 'text') {
-    message = <MessageText
-                  text={text}
-                   timeString={timeString}
-                   user={user}
-                   avatar={avatarUrl}
-                />
-  } else {
+  if (type === 'image') {
     message = <MessageImage
+                alt={message?.alt}
+                avatar={avatarUrl}
+                time={timeString}
+                url={message?.url}
+                user={user}
+              />
+  } else {
+    message = <MessageText
+                avatar={avatarUrl}
                 text={text}
-                 timeString={timeString}
-                 user={user}
-                 avatar={avatarUrl}
+                timeString={timeString}
+                user={user}
               />
   }
 

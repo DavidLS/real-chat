@@ -45,7 +45,6 @@ const Chat = ({ userName }) => {
     [])
 
   const emitExit = (userName) => {
-    console.log('TEST01')
     const message = {
       type: 'text',
       username: userName,
@@ -56,18 +55,18 @@ const Chat = ({ userName }) => {
     socketRef.current.emit('typing', false)
   }
 
-  const handleSendMessage = ({ message, alt = null, type = 'text' }) => {
-    console.log('[handleSendMessage] message')
-    console.log(message)
-    if (type === 'text') {
-      socketRef.current.emit('text-message', message)
-    } else {
-      socketRef.current.emit('image-message', { url: message, alt: alt })
-    }
+  const handleSendText = ({ message }) => {
+    socketRef.current.emit('text-message', message)
+  }
+
+  const handleSendImage = ({ url, alt }) => {
+    const image = { url: url }
+    if (alt) image.alt = alt
+    // socketRef.current.emit('image-message', image)
   }
 
   const handleTyping = (status) => {
-    socketRef.current.emit('typing', status)
+    // socketRef.current.emit('typing', status)
   }
 
   return (
@@ -77,7 +76,8 @@ const Chat = ({ userName }) => {
         messages={messages}
       />
       <MessageForm
-        handleMessage={handleSendMessage}
+        handleSendText={handleSendText}
+        handleSendImage={handleSendImage}
         handleTyping={handleTyping}
       />
       <div>

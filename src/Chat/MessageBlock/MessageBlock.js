@@ -1,6 +1,8 @@
 import React from 'react'
 import { format, isToday, isYesterday } from 'date-fns'
 
+import MessageText from './MessageText/MessageText'
+
 const getDayName = (date) => {
   if (isToday(date)) return ''
   if (isYesterday(date)) return 'Yesterday'
@@ -16,16 +18,39 @@ const formatTime = (timeRaw) => {
   return `${dayName + ' '}${time}`
 }
 
-const MessageBlock = ({ text, time, user }) => {
-  const encodedUri = encodeURI(user)
+const getAvatarUrl = (userName) => {
+  const encodedUri = encodeURI(userName)
+  return `https://ui-avatars.com/api/?name=${encodedUri}`
+}
+
+const MessageBlock = ({ text, time, user, type }) => {
+  const avatarUrl = getAvatarUrl(user)
   const timeString = formatTime(time)
+
+  let message = null
+  switch (type) {
+    case 'text':
+      message = <MessageText
+                  text={text}
+                   timeString={timeString}
+                   user={user}
+                   avatar={avatarUrl}
+                />
+      break
+
+    default:
+      message = <MessageText
+                  text={text}
+                   timeString={timeString}
+                   user={user}
+                   avatar={avatarUrl}
+                />
+      break
+  }
+
   return (
     <div>
-     <img src={`https://ui-avatars.com/api/?name=${encodedUri}`} alt={user}
-      />
-      <div style={{ whiteSpace: 'pre-line' }}>
-        <strong>{user}</strong> ({timeString}): {text}
-      </div>
+      {message}
     </div>
   )
 }

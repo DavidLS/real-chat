@@ -57,6 +57,8 @@ const Chat = ({ userName }) => {
   }
 
   const handleSendMessage = ({ message, alt = null, type = 'text' }) => {
+    console.log('[handleSendMessage] message')
+    console.log(message)
     if (type === 'text') {
       socketRef.current.emit('text-message', message)
     } else {

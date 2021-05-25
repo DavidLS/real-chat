@@ -2,6 +2,7 @@ import React from 'react'
 import { format, isToday, isYesterday } from 'date-fns'
 
 import MessageText from './MessageText/MessageText'
+import MessageImage from './MessageImage/MessageImage'
 
 const getDayName = (date) => {
   if (isToday(date)) return ''
@@ -36,7 +37,7 @@ const MessageBlock = ({ text, time, user, type }) => {
                    avatar={avatarUrl}
                 />
   } else {
-    message = <MessageText
+    message = <MessageImage
                 text={text}
                  timeString={timeString}
                  user={user}

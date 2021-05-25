@@ -33,17 +33,21 @@ const MessageForm = ({ handleMessage, handleTyping, placeholder }) => {
     }
   }
 
+  const handleSubmit = (message, type = 'text', alt = null) => {
+    console.log('[handleSubmit] message')
+    console.log(message)
+    handleMessage({ message: message, type: type, alt: alt })
+    setValue('')
+    setQuery('')
+    handleTyping(false)
+  }
+
   return (
     <>
       <form
         onSubmit={(event) => {
           event.preventDefault()
-          const message = event.target[0].value
-          // const type = query ? 'image' : 'text'
-          handleMessage({ message: message })
-          setValue('')
-          setQuery('')
-          handleTyping(false)
+          handleSubmit(event.target[0].value)
         }}
       >
         <textarea
@@ -61,7 +65,7 @@ const MessageForm = ({ handleMessage, handleTyping, placeholder }) => {
         <Popover
           isOpen={isPopoverOpen}
           positions={['top', 'bottom', 'left', 'right']} // preferred positions by priority
-          content={<GiPreviewList query={query}/>}
+          content={<GiPreviewList handleClick={handleSubmit} query={query}/>}
         >
           <button
             type="submit"

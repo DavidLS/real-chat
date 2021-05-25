@@ -9,7 +9,14 @@ const GifPreviewBlock = ({ gif }) => {
   return <img src={src} alt={gif.slug} />
 }
 
-const GiPreviewList = ({ query }) => {
+const GiPreviewList = ({ query, handleClick }) => {
+  const handleClick2 = (gif) => {
+    console.log('[handleClick2] gif')
+    console.log(gif)
+    const objMessage = { message: gif.images.fixed_height.url, type: 'image', alt: gif.slug }
+    handleClick(objMessage)
+  }
+
   useEffect(
     () => {
       async function getGifs () {
@@ -19,7 +26,6 @@ const GiPreviewList = ({ query }) => {
           const response = await fetch(`${GIPHY_API_SEARCH_URL}&q=${query}`)
           const json = await response.json()
           setGifList(json.data)
-          console.log(json)
         } catch (e) {
           setError(true)
         }
@@ -35,7 +41,16 @@ const GiPreviewList = ({ query }) => {
     {error
       ? <div>We are sorry! Please try again later</div>
       : gifList.map(
-        (gif, index) => <GifPreviewBlock key={`gif_preview_${index}`} gif={gif}/>
+        (gif) => <div
+                  key={`gif_preview_${gif.id}`}
+                  onClick={() => {
+                    handleClick2(gif)
+                  }}
+                >
+                  <GifPreviewBlock
+                    gif={gif}
+                  />
+                </div>
       )
   }
     </div>

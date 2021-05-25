@@ -19,7 +19,7 @@ const MessageForm = ({ handleMessage, handleTyping, placeholder }) => {
           (event) => {
             const message = event.target.value
             setValue(message)
-            handleTyping(message.trim())
+            handleTyping(!!message.trim())
           }
         }
         placeholder={placeholder}

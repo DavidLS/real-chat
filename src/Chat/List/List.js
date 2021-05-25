@@ -11,6 +11,7 @@ const List = ({ messages }) => {
               user={message.username}
               time={message.time}
               text={message.text}
+              type={message.type}
             />
         )
       })

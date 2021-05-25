@@ -28,24 +28,20 @@ const MessageBlock = ({ text, time, user, type }) => {
   const timeString = formatTime(time)
 
   let message = null
-  switch (type) {
-    case 'text':
-      message = <MessageText
+  if (type === 'text') {
+    message = <MessageText
                   text={text}
                    timeString={timeString}
                    user={user}
                    avatar={avatarUrl}
                 />
-      break
-
-    default:
-      message = <MessageText
-                  text={text}
-                   timeString={timeString}
-                   user={user}
-                   avatar={avatarUrl}
-                />
-      break
+  } else {
+    message = <MessageText
+                text={text}
+                 timeString={timeString}
+                 user={user}
+                 avatar={avatarUrl}
+              />
   }
 
   return (

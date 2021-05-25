@@ -21,7 +21,7 @@ const Chat = ({ userName }) => {
 
       socketRef.current.on('user-disconnected', username => {
         const message = {
-          type: 'disconnect',
+          type: 'text',
           username: username,
           time: new Date().toISOString(),
           text: `${username} has disconnected`

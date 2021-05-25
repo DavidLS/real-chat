@@ -19,18 +19,18 @@ const Chat = ({ userName }) => {
         setMessages(messages => [...messages, message])
       })
 
-      socketRef.current.on('user-disconnected', username => {
+      socketRef.current.on('user-disconnected', userName => {
         const message = {
           type: 'text',
-          username: username,
+          username: userName,
           time: new Date().toISOString(),
-          text: `${username} has disconnected`
+          text: `${userName} has disconnected`
         }
         setMessages(messages => [...messages, message])
       })
 
-      socketRef.current.on('user-connected', username => {
-        socketRef.current.emit('text-message', `${username} has joined`)
+      socketRef.current.on('user-connected', userName => {
+        socketRef.current.emit('text-message', `${userName} has joined`)
       })
 
       socketRef.current.on('is-typing', typersRaw => {
@@ -40,13 +40,19 @@ const Chat = ({ userName }) => {
         setTypers(typersAux)
       })
 
-      window.addEventListener('beforeunload', emitTypingStopped)
-
-      return () => window.removeEventListener('beforeunload', emitTypingStopped)
+      window.addEventListener('beforeunload', (userName) => emitExit(userName), { once: true })
     },
     [])
 
-  const emitTypingStopped = () => {
+  const emitExit = (userName) => {
+    console.log('TEST01')
+    const message = {
+      type: 'text',
+      username: userName,
+      time: new Date().toISOString(),
+      text: `${userName} has disconnected`
+    }
+    socketRef.current.emit('text-message', message)
     socketRef.current.emit('typing', false)
   }
 

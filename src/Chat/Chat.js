@@ -50,8 +50,12 @@ const Chat = ({ userName }) => {
     socketRef.current.emit('typing', false)
   }
 
-  const handleSendMessage = (message) => {
-    socketRef.current.emit('text-message', message)
+  const handleSendMessage = ({ message, alt = null, type = 'text' }) => {
+    if (type === 'text') {
+      socketRef.current.emit('text-message', message)
+    } else {
+      socketRef.current.emit('image-message', { url: message, alt: alt })
+    }
   }
 
   const handleTyping = (status) => {

@@ -1,11 +1,11 @@
 import React from 'react'
 
-const MessageImage = ({ text, timeString, user, avatar }) => {
+const MessageImage = ({ alt, avatar, timeString, url, user }) => {
   return (
     <div>
      <img src={avatar} alt={user} />
       <div>
-      <img src={avatar} alt={user} />
+      <img src={url} alt={alt} />
       </div>
     </div>
   )

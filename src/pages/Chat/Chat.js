@@ -44,7 +44,7 @@ const Chat = () => {
   }
 
   return (
-    <div className={[styles.ChatContainer, isLoading ? styles.ChatContainer_Centered : null]}>
+    <div className={[styles.ChatContainer, isLoading ? styles.ChatContainer_Centered : null].join(' ')}>
       {isLoading
         ? <Spinner size={200}/>
         : <>

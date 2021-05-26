@@ -24,25 +24,25 @@ const getAvatarUrl = (userName) => {
   return `https://ui-avatars.com/api/?name=${encodedUri}`
 }
 
-const MessageBlock = ({ text, time, user, type }) => {
-  const avatarUrl = getAvatarUrl(user)
-  const timeString = formatTime(time)
+const MessageBlock = ({ messageObj }) => {
+  const avatarUrl = getAvatarUrl(messageObj.user)
+  const timeString = formatTime(messageObj.time)
 
   let message = null
-  if (type === 'image') {
+  if (messageObj.type === 'image') {
     message = <MessageImage
-                alt={message?.alt}
+                alt={messageObj.alt}
                 avatar={avatarUrl}
                 time={timeString}
-                url={message?.url}
-                user={user}
+                url={messageObj.url}
+                user={messageObj.user}
               />
   } else {
     message = <MessageText
                 avatar={avatarUrl}
-                text={text}
+                text={messageObj.text}
                 timeString={timeString}
-                user={user}
+                user={messageObj.user}
               />
   }
 

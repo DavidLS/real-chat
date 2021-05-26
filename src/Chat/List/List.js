@@ -8,10 +8,7 @@ const List = ({ messages }) => {
         return (
             <MessageBlock
               key={`message_${message.time}`}
-              user={message.username}
-              time={message.time}
-              text={message.text}
-              type={message.type}
+              messageObj={message}
             />
         )
       })

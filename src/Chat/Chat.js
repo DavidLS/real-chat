@@ -59,15 +59,15 @@ const Chat = ({ userName }) => {
   }
 
   const emitText = ({ message }) => {
-    console.log('emitText')
-    console.log(message)
-    // socketRef.current.emit('text-message', message)
+    socketRef.current.emit('text-message', message)
   }
 
   const emitImage = ({ image }) => {
-    console.log('emitImage')
-    console.log(image)
-    // socketRef.current.emit('image-message', image)
+    socketRef.current.emit('image-message', image)
+  }
+
+  const emitTyping = (status) => {
+    socketRef.current.emit('typing', status)
   }
 
   const handleSendText = ({ message }) => {
@@ -81,7 +81,7 @@ const Chat = ({ userName }) => {
   }
 
   const handleTyping = (status) => {
-    // socketRef.current.emit('typing', status)
+    emitTyping(status)
   }
 
   return (

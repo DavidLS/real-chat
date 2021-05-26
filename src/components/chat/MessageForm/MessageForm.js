@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Popover } from 'react-tiny-popover'
 
-import GiPreviewList from './GiPreviewList/GiPreviewList'
+import GiPreviewList from './GiPreviewList/'
 
 const MessageForm = ({ handleSendImage, handleSendText, handleTyping }) => {
   const [value, setValue] = useState('')

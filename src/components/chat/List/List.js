@@ -1,5 +1,5 @@
 import React from 'react'
-import MessageBlock from '../MessageBlock/MessageBlock'
+import MessageBlock from './MessageBlock/'
 
 const List = ({ messages }) => {
   return (

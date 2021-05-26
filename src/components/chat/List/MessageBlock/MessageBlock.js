@@ -1,8 +1,8 @@
 import React from 'react'
 import { format, isToday, isYesterday } from 'date-fns'
 
-import MessageText from './MessageText/MessageText'
-import MessageImage from './MessageImage/MessageImage'
+import MessageText from './MessageText/'
+import MessageImage from './MessageImage/'
 
 const getDayName = (date) => {
   if (isToday(date)) return ''

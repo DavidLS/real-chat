@@ -4,8 +4,8 @@ import socketClient from 'socket.io-client'
 
 import { useLocation, useHistory } from 'react-router-dom'
 
-import List from './List/List'
-import MessageForm from './MessageForm/MessageForm'
+import List from '../../components/chat/List'
+import MessageForm from '../../components/chat/MessageForm/'
 
 const useQuery = () => new URLSearchParams(useLocation().search)
 

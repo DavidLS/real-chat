@@ -45,24 +45,26 @@ const Chat = () => {
 
   return (
     <div className={[styles.ChatContainer, isLoading ? styles.ChatContainer_Centered : null]}>
-      <>
-        {isLoading && <Spinner size={200}/>}
-        <List
-          messages={messages}
-        />
-        <MessageForm
-          handleSendText={handleSendText}
-          handleSendImage={handleSendImage}
-          handleTyping={handleTyping}
-        />
-        { (typers.length > 0) && <div className={styles.ChatTyping}>
-                                    {typers.length > 1
-                                      ? 'People are writing...'
-                                      : `${typers[0]} is writing...`
-                                    }
-                                  </div>
-        }
-      </>
+      {isLoading
+        ? <Spinner size={200}/>
+        : <>
+            <List
+              messages={messages}
+            />
+            <MessageForm
+              handleSendText={handleSendText}
+              handleSendImage={handleSendImage}
+              handleTyping={handleTyping}
+            />
+            { (typers.length > 0) && <div className={styles.ChatTyping}>
+                                        {typers.length > 1
+                                          ? 'People are writing...'
+                                          : `${typers[0]} is writing...`
+                                        }
+                                      </div>
+            }
+          </>
+       }
     </div>
   )
 }

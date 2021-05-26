@@ -14,6 +14,7 @@ const useChat = ({ userName }) => {
 
       socketRef.current.on('message', message => {
         setMessages(messages => [...messages, message])
+        setIsLoading(false)
       })
 
       socketRef.current.on('user-disconnected', user => {
@@ -48,7 +49,6 @@ const useChat = ({ userName }) => {
       })
 
       window.addEventListener('beforeunload', () => socketRef.current.emit('typing', false), { once: true })
-      setIsLoading(false)
     },
     [])
 

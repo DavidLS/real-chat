@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { format, isToday, isYesterday } from 'date-fns'
 
+import styles from './MessageBlock.module.css'
+
 import MessageText from './MessageText/'
 import MessageImage from './MessageImage/'
 import Spinner from '../../../utils/Spinner'
@@ -32,30 +34,32 @@ const MessageBlock = ({ messageObj }) => {
   if (messageObj.type === 'image') {
     message = <MessageImage
                 alt={messageObj.alt}
-                time={timeString}
                 url={messageObj.url}
-                user={messageObj.username}
               />
   } else {
     message = <MessageText
                 text={messageObj.text}
-                timeString={timeString}
-                user={messageObj.username}
               />
   }
 
   return (
-    <div>
+    <div className={styles.MessageBlock}>
       <div>
         {isLoading && <Spinner/>}
         <img
+          className={styles.MessageAvatar}
           src={avatarUrl}
           alt={messageObj.username}
           onLoad={() => setIsLoading(false)}
         />
       </div>
-      <div>
-        {message}
+      <div className={styles.MessageBlockContent}>
+        <div className={styles.MessageBlockContentTitle}>
+          <b>{messageObj.username}</b><span>{timeString}</span>
+        </div>
+        <div>
+          {message}
+        </div>
       </div>
     </div>
   )

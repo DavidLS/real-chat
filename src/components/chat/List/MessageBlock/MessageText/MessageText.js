@@ -1,9 +1,11 @@
 import React from 'react'
 
-const MessageText = ({ text, timeString, user }) => {
+import styles from './MessageText.module.css'
+
+const MessageText = ({ text }) => {
   return (
-    <div style={{ whiteSpace: 'pre-line' }}>
-      <strong>{user}</strong> ({timeString}): {text}
+    <div className={styles.MessageText}>
+      {text}
     </div>
   )
 }

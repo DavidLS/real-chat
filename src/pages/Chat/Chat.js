@@ -45,7 +45,6 @@ const Chat = () => {
 
   return (
     <div className={styles.ChatContainer}>
-      <h1>Hi {userName}</h1>
       {isLoading
         ? <Spinner/>
         : <>

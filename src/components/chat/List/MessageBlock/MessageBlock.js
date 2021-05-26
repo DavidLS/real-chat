@@ -4,6 +4,8 @@ import { format, isToday, isYesterday } from 'date-fns'
 import MessageText from './MessageText/'
 import MessageImage from './MessageImage/'
 
+import getAvatarUrl from '../../../../integrations/avatar/getAvatarUrl'
+
 const getDayName = (date) => {
   if (isToday(date)) return ''
   if (isYesterday(date)) return 'Yesterday'
@@ -17,11 +19,6 @@ const formatTime = (timeRaw) => {
   const time = format(date, 'h:mm aaa')
 
   return `${dayName + ' '}${time}`
-}
-
-const getAvatarUrl = (userName) => {
-  const encodedUri = encodeURI(userName)
-  return `https://ui-avatars.com/api/?name=${encodedUri}`
 }
 
 const MessageBlock = ({ messageObj }) => {

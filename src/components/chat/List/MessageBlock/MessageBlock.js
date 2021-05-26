@@ -29,14 +29,12 @@ const MessageBlock = ({ messageObj }) => {
   if (messageObj.type === 'image') {
     message = <MessageImage
                 alt={messageObj.alt}
-                avatar={avatarUrl}
                 time={timeString}
                 url={messageObj.url}
                 user={messageObj.username}
               />
   } else {
     message = <MessageText
-                avatar={avatarUrl}
                 text={messageObj.text}
                 timeString={timeString}
                 user={messageObj.username}
@@ -45,7 +43,10 @@ const MessageBlock = ({ messageObj }) => {
 
   return (
     <div>
-      {message}
+      <img src={avatarUrl} alt={messageObj.username} />
+      <div>
+        {message}
+      </div>
     </div>
   )
 }

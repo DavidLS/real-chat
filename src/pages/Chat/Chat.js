@@ -6,6 +6,7 @@ import { useLocation, useHistory } from 'react-router-dom'
 
 import List from '../../components/chat/List'
 import MessageForm from '../../components/chat/MessageForm/'
+import Spinner from '../../components/utils/Spinner'
 
 const useQuery = () => new URLSearchParams(useLocation().search)
 
@@ -17,6 +18,7 @@ const Chat = () => {
     history.push('/')
   }
 
+  const [isLoading, setIsLoading] = useState(true)
   const [messages, setMessages] = useState([])
   const [typers, setTypers] = useState([])
   const socketRef = useRef()
@@ -62,6 +64,7 @@ const Chat = () => {
       })
 
       window.addEventListener('beforeunload', (userName) => emitExit(userName), { once: true })
+      setIsLoading(false)
     },
     [])
 
@@ -98,22 +101,27 @@ const Chat = () => {
   return (
     <div>
       <h1>Hi {userName}</h1>
-      <List
-        messages={messages}
-      />
-      <MessageForm
-        handleSendText={handleSendText}
-        handleSendImage={handleSendImage}
-        handleTyping={handleTyping}
-      />
-      <div>
-        {typers.length < 1
-          ? null
-          : typers.length > 1
-            ? 'People are writing...'
-            : `${typers[0]} is writing...`
-        }
-      </div>
+      {isLoading
+        ? <Spinner/>
+        : <>
+            <List
+              messages={messages}
+            />
+            <MessageForm
+              handleSendText={handleSendText}
+              handleSendImage={handleSendImage}
+              handleTyping={handleTyping}
+            />
+            <div>
+              {typers.length < 1
+                ? null
+                : typers.length > 1
+                  ? 'People are writing...'
+                  : `${typers[0]} is writing...`
+              }
+            </div>
+        </>
+       }
     </div>
   )
 }

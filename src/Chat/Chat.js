@@ -2,10 +2,21 @@ import React, { useState, useEffect, useRef } from 'react'
 
 import socketClient from 'socket.io-client'
 
+import { useLocation, useHistory } from 'react-router-dom'
+
 import List from './List/List'
 import MessageForm from './MessageForm/MessageForm'
 
-const Chat = ({ userName }) => {
+const useQuery = () => new URLSearchParams(useLocation().search)
+
+const Chat = () => {
+  const userName = useQuery().get('username')
+
+  if (!userName) {
+    const history = useHistory()
+    history.push('/')
+  }
+
   const [messages, setMessages] = useState([])
   const [typers, setTypers] = useState([])
   const socketRef = useRef()
@@ -54,7 +65,7 @@ const Chat = ({ userName }) => {
     },
     [])
 
-  const emitExit = (userName) => {
+  const emitExit = () => {
     socketRef.current.emit('typing', false)
   }
 

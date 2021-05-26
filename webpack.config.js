@@ -9,13 +9,15 @@ module.exports = {
   entry: './index.js',
   output: {
     path: path.resolve(__dirname, 'public'),
-    filename: 'main.js'
+    filename: 'main.js',
+    publicPath: '/'
   },
   devServer: {
     port: '9500',
     contentBase: ['./public'],
     open: true,
-    hot: true
+    hot: true,
+    historyApiFallback: true
   },
   resolve: {
     extensions: ['.js', '.jsx', '.json']
@@ -42,8 +44,7 @@ module.exports = {
               },
               sourceMap: isDevEnvironment
             }
-          },
-          'postcss-loader'
+          }
         ]
       }
     ]

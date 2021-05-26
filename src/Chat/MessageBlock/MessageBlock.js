@@ -25,7 +25,7 @@ const getAvatarUrl = (userName) => {
 }
 
 const MessageBlock = ({ messageObj }) => {
-  const avatarUrl = getAvatarUrl(messageObj.user)
+  const avatarUrl = getAvatarUrl(messageObj.username)
   const timeString = formatTime(messageObj.time)
 
   let message = null
@@ -35,14 +35,14 @@ const MessageBlock = ({ messageObj }) => {
                 avatar={avatarUrl}
                 time={timeString}
                 url={messageObj.url}
-                user={messageObj.user}
+                user={messageObj.username}
               />
   } else {
     message = <MessageText
                 avatar={avatarUrl}
                 text={messageObj.text}
                 timeString={timeString}
-                user={messageObj.user}
+                user={messageObj.username}
               />
   }
 

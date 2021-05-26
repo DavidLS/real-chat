@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 
 import styles from './Login.module.css'
 
-const Login = ({ handleChange, handleSubmit, placeholder, value }) => {
+const Login = () => {
   const [error, setError] = useState(false)
+  const [userName, setUserName] = useState('')
 
   return (
     <div className={styles.FormContainer}>
@@ -14,29 +15,30 @@ const Login = ({ handleChange, handleSubmit, placeholder, value }) => {
         Please enter your username
       </h2>
       <form
+        action={'/chat'}
         className={styles.LoginForm}
         onSubmit={(event) => {
-          event.preventDefault()
           setError(false)
           const value = event.target[0].value
-          if (value.trim()) {
-            handleSubmit(value.trim())
-          } else {
+          if (!value.trim()) {
             setError(true)
           }
+          console.log('not error')
+          return !error
         }}
       >
         <input
           className={styles.LoginFormInput}
-          value={value}
+          value={userName}
           onChange={
             (event) => {
               setError(false)
-              handleChange(event.target.value)
+              setUserName(event.target.value)
             }
           }
-          placeholder={placeholder}
+          placeholder="Enter your username"
           type="text"
+          name="username"
           />
         {error
           ? <div className={styles.LoginError}>

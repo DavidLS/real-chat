@@ -36,6 +36,7 @@ const MessageForm = ({ handleSendImage, handleSendText, handleTyping }) => {
   }
 
   const cleanForm = () => {
+    setIsPopoverOpen(false)
     setValue('')
     setQuery('')
     handleTyping(false)
@@ -75,6 +76,8 @@ const MessageForm = ({ handleSendImage, handleSendText, handleTyping }) => {
           isOpen={isPopoverOpen}
           positions={['top', 'bottom', 'left', 'right']} // preferred positions by priority
           content={<GiPreviewList handleClick={handleImageClick} query={query}/>}
+          align="left"
+          onClickOutside={cleanForm}
         >
           <button
             className={styles.MessageFormSubmit}

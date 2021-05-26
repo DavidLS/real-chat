@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState } from 'react'
 import { Popover } from 'react-tiny-popover'
-
+import TextareaAutosize from 'react-autosize-textarea'
 import GiPreviewList from '../../../integrations/gif/GiPreviewList'
 
 import styles from './MessageForm.module.css'
@@ -12,20 +12,12 @@ const MessageForm = ({ handleSendImage, handleSendText, handleTyping }) => {
 
   const buttonDisabled = !value.trim() || value.startsWith('/gif ')
 
-  const textAreaRef = useRef(null)
-  const [textAreaHeight, setTextAreaHeight] = useState('auto')
-
-  useEffect(() => {
-    setTextAreaHeight(`${textAreaRef.current.scrollHeight}px`)
-  }, [value])
-
   const handleOnChange = (event) => {
     const message = event.target.value
 
     setIsPopoverOpen(false)
     setQuery('')
 
-    setTextAreaHeight('auto')
     setValue(message)
     handleTyping(!!message.trim())
 
@@ -59,18 +51,14 @@ const MessageForm = ({ handleSendImage, handleSendText, handleTyping }) => {
        className={styles.MessageFormForm}
         onSubmit={handleSubmit}
       >
-        <textarea
+        <TextareaAutosize
           className={styles.MessageFormTextArea}
-          ref={textAreaRef}
           value={value}
           onChange={handleOnChange}
           placeholder="Message"
           type="text"
           autoFocus
           rows={1}
-          style={{
-            height: textAreaHeight
-          }}
         />
         <Popover
           isOpen={isPopoverOpen}

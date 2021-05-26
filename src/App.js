@@ -1,5 +1,9 @@
 import React, { useState } from 'react'
 
+import styles from './App.module.css'
+
+import './index.css'
+
 import Login from './Login/Login'
 import Chat from './Chat/Chat'
 const App = () => {
@@ -11,20 +15,21 @@ const App = () => {
   const handleSubmit = () => setInChat(true)
 
   return (
-    <>
-      {inChat
-        ? <Chat
-            userName={userName}
+    <div className={styles.Container}>
+      <div className={styles.SubContainer}>
+        {inChat
+          ? <Chat
+              userName={userName}
+            />
+          : <Login
+              handleChange={handleChange}
+              handleSubmit={handleSubmit}
+              value={userName}
+              placeholder="Enter your username"
           />
-        : <Login
-            handleChange={handleChange}
-            handleSubmit={handleSubmit}
-            value={userName}
-            placeholder="Enter your username"
-        />
-      }
-
-    </>
+        }
+      </div>
+    </div>
   )
 }
 

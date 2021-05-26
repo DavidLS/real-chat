@@ -1,0 +1,56 @@
+.FormContainer{
+  display: flex;
+  flex-direction: column;
+}
+
+.LoginTitle{
+  font-size: 32px;
+  line-height: 37px;
+  letter-spacing: 1px;
+  margin-top: 0px;
+  margin-bottom: 40px;
+}
+
+.LoginSubtitle{
+  line-height: 16px;
+  margin-top: 0px;
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+
+.LoginError{
+  color: #cc0000;
+  padding: 4px 12px;
+  border-bottom: -4px;
+  font-size: 12px;
+}
+
+.LoginForm{
+  display: flex;
+  flex-direction: column;
+}
+
+.LoginFormInput{
+  border: 1px solid #D6D6D6;
+  box-sizing: border-box;
+  border-radius: 8px;
+  line-height: 16px;
+  height: 40px;
+  padding: 0 12px;
+  letter-spacing: 0.002em;
+}
+
+.LoginButton{
+  align-self: flex-end;
+  background: #FF8200;
+  border-radius: 4px;
+  width: 100px;
+  height: 40px;
+  color: white;
+  font-weight: bold;
+  margin-top: 40px;
+}
+
+input, button, submit{
+  border: none;
+}

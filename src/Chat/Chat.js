@@ -64,6 +64,12 @@ const Chat = ({ userName }) => {
     // socketRef.current.emit('text-message', message)
   }
 
+  const emitImage = ({ image }) => {
+    console.log('emitImage')
+    console.log(image)
+    // socketRef.current.emit('image-message', image)
+  }
+
   const handleSendText = ({ message }) => {
     emitText({ message })
   }
@@ -71,7 +77,7 @@ const Chat = ({ userName }) => {
   const handleSendImage = ({ url, alt }) => {
     const image = { url: url }
     if (alt) image.alt = alt
-    // socketRef.current.emit('image-message', image)
+    emitImage({ image })
   }
 
   const handleTyping = (status) => {

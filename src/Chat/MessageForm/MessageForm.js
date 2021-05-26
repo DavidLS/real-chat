@@ -49,7 +49,7 @@ const MessageForm = ({ handleSendImage, handleSendText, handleTyping }) => {
       <form
         onSubmit={(event) => {
           event.preventDefault()
-          handleSendText({ message: event.target[0].value })
+          handleSendText({ message: value })
           cleanForm()
         }}
       >

@@ -19,18 +19,28 @@ const Chat = ({ userName }) => {
         setMessages(messages => [...messages, message])
       })
 
-      socketRef.current.on('user-disconnected', userName => {
-        const message = {
-          type: 'text',
-          username: userName,
-          time: new Date().toISOString(),
-          text: `${userName} has disconnected`
+      socketRef.current.on('user-disconnected', user => {
+        if (user !== userName) {
+          const message = {
+            type: 'text',
+            username: user,
+            time: new Date().toISOString(),
+            text: `${user} has disconnected`
+          }
+          setMessages(messages => [...messages, message])
         }
-        setMessages(messages => [...messages, message])
       })
 
-      socketRef.current.on('user-connected', userName => {
-        socketRef.current.emit('text-message', `${userName} has joined`)
+      socketRef.current.on('user-connected', user => {
+        if (user !== userName) {
+          const message = {
+            type: 'text',
+            username: user,
+            time: new Date().toISOString(),
+            text: `${user} has joined`
+          }
+          setMessages(messages => [...messages, message])
+        }
       })
 
       socketRef.current.on('is-typing', typersRaw => {
@@ -45,18 +55,17 @@ const Chat = ({ userName }) => {
     [])
 
   const emitExit = (userName) => {
-    const message = {
-      type: 'text',
-      username: userName,
-      time: new Date().toISOString(),
-      text: `${userName} has disconnected`
-    }
-    socketRef.current.emit('text-message', message)
     socketRef.current.emit('typing', false)
   }
 
+  const emitText = ({ message }) => {
+    console.log('emitText')
+    console.log(message)
+    // socketRef.current.emit('text-message', message)
+  }
+
   const handleSendText = ({ message }) => {
-    socketRef.current.emit('text-message', message)
+    emitText({ message })
   }
 
   const handleSendImage = ({ url, alt }) => {

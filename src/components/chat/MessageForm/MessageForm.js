@@ -3,6 +3,8 @@ import { Popover } from 'react-tiny-popover'
 
 import GiPreviewList from '../../../integrations/gif/GiPreviewList'
 
+import styles from './MessageForm.module.css'
+
 const MessageForm = ({ handleSendImage, handleSendText, handleTyping }) => {
   const [value, setValue] = useState('')
   const [isPopoverOpen, setIsPopoverOpen] = useState(false)
@@ -44,16 +46,20 @@ const MessageForm = ({ handleSendImage, handleSendText, handleTyping }) => {
     cleanForm()
   }
 
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    handleSendText({ message: value })
+    cleanForm()
+  }
+
   return (
     <>
       <form
-        onSubmit={(event) => {
-          event.preventDefault()
-          handleSendText({ message: value })
-          cleanForm()
-        }}
+       className={styles.MessageFormForm}
+        onSubmit={handleSubmit}
       >
         <textarea
+          className={styles.MessageFormTextArea}
           ref={textAreaRef}
           value={value}
           onChange={handleOnChange}
@@ -76,7 +82,7 @@ const MessageForm = ({ handleSendImage, handleSendText, handleTyping }) => {
           >
             Send
           </button>
-      </Popover>
+        </Popover>
       </form>
     </>
   )

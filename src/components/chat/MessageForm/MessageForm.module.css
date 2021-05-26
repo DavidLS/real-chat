@@ -1,0 +1,15 @@
+.MessageFormTextArea {
+  background: #FFFFFF;
+  border: 1px solid #D6D6D6;
+  border-radius: 4px;
+  font-size: 16px;
+  letter-spacing: 0.2px;
+  font-family: Arial;
+  width: inherit;
+  /* padding: 12px; */
+}
+
+.MessageFormForm {
+  display: flex;
+  width: 552px;
+}

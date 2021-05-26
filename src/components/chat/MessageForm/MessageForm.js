@@ -22,8 +22,10 @@ const MessageForm = ({ handleSendImage, handleSendText, handleTyping }) => {
     handleTyping(!!message.trim())
 
     if (message.toLowerCase().startsWith('/gif ')) {
-      setIsPopoverOpen(true)
-      setQuery(message.toLowerCase().substring(5))
+      if (message.toLowerCase().substring(5)) {
+        setIsPopoverOpen(true)
+        setQuery(message.toLowerCase().substring(5))
+      }
     }
   }
 
@@ -62,7 +64,7 @@ const MessageForm = ({ handleSendImage, handleSendText, handleTyping }) => {
         />
         <Popover
           isOpen={isPopoverOpen}
-          positions={['top', 'bottom', 'left', 'right']} // preferred positions by priority
+          positions={['top']} // preferred positions by priority
           content={<GiPreviewList handleClick={handleImageClick} query={query}/>}
           align="left"
           onClickOutside={cleanForm}

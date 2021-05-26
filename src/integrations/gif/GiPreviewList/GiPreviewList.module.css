@@ -1,13 +1,24 @@
 .GiPreviewList {
   display: flex;
   flex-wrap: wrap;
-  background: white;
-  border: 1px solid #555555;
+  background: #eeeeee;
+  border: 1px solid #aaaaaa;
   text-align: center;
-  width: 1000px;
+  width: 440px;
+  padding: 8px;
+  align-items: center;
+  border-radius: 8px;
 }
 
 .GiPreviewItem {
   flex: 50%;
   margin-bottom: 2px;
 }
+
+.GiPreviewItem > img{
+  max-width: 200px;
+  max-height: 200px;
+  border: 1px solid;
+  border-radius: 8px;
+}
+

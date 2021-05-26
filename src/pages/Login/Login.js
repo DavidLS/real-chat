@@ -40,11 +40,9 @@ const Login = () => {
           type="text"
           name="username"
           />
-        {error
-          ? <div className={styles.LoginError}>
-              Please enter a username
-            </div>
-          : null
+        {error && <div className={styles.LoginError}>
+                    Please enter a username
+                  </div>
         }
         <button className={styles.LoginButton} type="submit">Next</button>
       </form>

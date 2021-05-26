@@ -112,14 +112,14 @@ const Chat = () => {
               handleSendImage={handleSendImage}
               handleTyping={handleTyping}
             />
-            <div>
-              {typers.length < 1
-                ? null
-                : typers.length > 1
-                  ? 'People are writing...'
-                  : `${typers[0]} is writing...`
-              }
-            </div>
+
+          { (typers.length > 0) && <div>
+                                      {typers.length > 1
+                                        ? 'People are writing...'
+                                        : `${typers[0]} is writing...`
+                                      }
+                                    </div>
+          }
         </>
        }
     </div>

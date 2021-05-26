@@ -1,8 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Spinner from '../../../../utils/Spinner'
 
 const MessageImage = ({ alt, avatar, timeString, url, user }) => {
+  const [isLoading, setIsLoading] = useState(true)
+
   return (
-      <img src={url} alt={alt} />
+    <>
+      {isLoading && <Spinner/>}
+      <img
+        src={url}
+        alt={alt}
+        onLoad={() => setIsLoading(false)}
+      />
+    </>
   )
 }
 

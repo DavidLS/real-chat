@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { format, isToday, isYesterday } from 'date-fns'
 
 import MessageText from './MessageText/'
 import MessageImage from './MessageImage/'
+import Spinner from '../../../utils/Spinner'
 
 import getAvatarUrl from '../../../../integrations/avatar/getAvatarUrl'
 
@@ -22,6 +23,8 @@ const formatTime = (timeRaw) => {
 }
 
 const MessageBlock = ({ messageObj }) => {
+  const [isLoading, setIsLoading] = useState(true)
+
   const avatarUrl = getAvatarUrl(messageObj.username)
   const timeString = formatTime(messageObj.time)
 
@@ -43,7 +46,14 @@ const MessageBlock = ({ messageObj }) => {
 
   return (
     <div>
-      <img src={avatarUrl} alt={messageObj.username} />
+      <div>
+        {isLoading && <Spinner/>}
+        <img
+          src={avatarUrl}
+          alt={messageObj.username}
+          onLoad={() => setIsLoading(false)}
+        />
+      </div>
       <div>
         {message}
       </div>

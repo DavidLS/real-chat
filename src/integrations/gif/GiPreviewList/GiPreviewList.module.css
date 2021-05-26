@@ -1,6 +1,10 @@
 .GiPreviewList {
   display: flex;
   flex-wrap: wrap;
+  background: white;
+  border: 1px solid #555555;
+  text-align: center;
+  width: 1000px;
 }
 
 .GiPreviewItem {

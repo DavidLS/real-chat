@@ -3,11 +3,12 @@
   flex-wrap: wrap;
   background: #eeeeee;
   border: 1px solid #aaaaaa;
-  text-align: center;
   width: 440px;
   padding: 8px;
-  align-items: center;
   border-radius: 8px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .GiPreviewItem {

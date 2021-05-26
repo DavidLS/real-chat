@@ -6,13 +6,3 @@
   align-items: center;
   font-family: Arial;
 }
-
-.SubContainer{
-  width: 100%;
-  max-width: 600px;
-  padding: 40px;
-  border: 1px solid #D6D6D6;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-}

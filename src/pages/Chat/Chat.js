@@ -8,6 +8,8 @@ import List from '../../components/chat/List'
 import MessageForm from '../../components/chat/MessageForm/'
 import Spinner from '../../components/utils/Spinner'
 
+import styles from './Chat.module.css'
+
 const useQuery = () => new URLSearchParams(useLocation().search)
 
 const Chat = () => {
@@ -42,7 +44,7 @@ const Chat = () => {
   }
 
   return (
-    <div>
+    <div className={styles.ChatContainer}>
       <h1>Hi {userName}</h1>
       {isLoading
         ? <Spinner/>

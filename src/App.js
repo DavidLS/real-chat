@@ -2,7 +2,6 @@ import React, { lazy, Suspense } from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 import styles from './App.module.css'
-import './index.css'
 
 import Spinner from './components/utils/Spinner'
 

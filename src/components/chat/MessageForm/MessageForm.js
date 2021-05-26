@@ -77,6 +77,7 @@ const MessageForm = ({ handleSendImage, handleSendText, handleTyping }) => {
           content={<GiPreviewList handleClick={handleImageClick} query={query}/>}
         >
           <button
+            className={styles.MessageFormSubmit}
             type="submit"
             disabled={buttonDisabled}
           >

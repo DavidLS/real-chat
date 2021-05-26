@@ -45,7 +45,7 @@ const MessageBlock = ({ messageObj }) => {
   return (
     <div className={styles.MessageBlock}>
       <div>
-        {isLoading && <Spinner/>}
+        {isLoading && <Spinner size={20}/>}
         <img
           className={styles.MessageAvatar}
           src={avatarUrl}

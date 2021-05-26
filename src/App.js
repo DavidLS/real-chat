@@ -11,7 +11,7 @@ const Login = lazy(() => import('./pages/Login/Login'))
 const App = () => {
   return (
     <div className={styles.Container}>
-      <Suspense fallback={<Spinner />}>
+      <Suspense fallback={<Spinner size={200}/>}>
         <BrowserRouter>
           <Switch>
             <Route path="/chat"

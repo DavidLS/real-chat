@@ -8,6 +8,10 @@
   flex-direction: column;
 }
 
+.ChatContainer_Centered{
+  align-items: center;
+}
+
 .ChatTyping{
   color: #666666
 }

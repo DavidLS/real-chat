@@ -8,7 +8,7 @@ const MessageImage = ({ alt, url }) => {
 
   return (
     <>
-      {isLoading && <Spinner size={'200px'}/>}
+      {isLoading && <Spinner size={100}/>}
       <img
         className={styles.MessageImage}
         src={url}

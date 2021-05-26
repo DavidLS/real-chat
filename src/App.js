@@ -5,8 +5,8 @@ import styles from './App.module.css'
 
 import './index.css'
 
-import Login from './Login/Login'
-import Chat from './Chat/Chat'
+import Login from './pages/Login'
+import Chat from './pages/Chat/'
 const App = () => {
   return (
     <div className={styles.Container}>

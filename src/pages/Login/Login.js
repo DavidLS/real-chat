@@ -1,10 +1,24 @@
 import React, { useState } from 'react'
 
+import { useHistory } from 'react-router-dom'
+
 import styles from './Login.module.css'
 
 const Login = () => {
   const [error, setError] = useState(false)
   const [userName, setUserName] = useState('')
+  const history = useHistory()
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    setError(false)
+    const value = event.target[0].value
+    if (!value.trim()) {
+      setError(true)
+    } else {
+      history.push(`/chat?username=${userName}`)
+    }
+  }
 
   return (
     <div className={styles.FormContainer}>
@@ -17,15 +31,7 @@ const Login = () => {
       <form
         action={'/chat'}
         className={styles.LoginForm}
-        onSubmit={(event) => {
-          setError(false)
-          const value = event.target[0].value
-          if (!value.trim()) {
-            setError(true)
-          }
-          console.log('not error')
-          return !error
-        }}
+        onSubmit={handleSubmit}
       >
         <input
           className={styles.LoginFormInput}

@@ -4,7 +4,7 @@ Realtime chat application. With auto-generated avatar images and giphy integrati
 
 ## Demo
 
-- [Link](https://github.com/Rohit19060/<project-name> "<project-name> Repo")
+- [Link](https://nervous-franklin-4fcca3.netlify.app/)
 
 
 ## Libraries / Tools

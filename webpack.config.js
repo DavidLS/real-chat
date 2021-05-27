@@ -4,7 +4,7 @@ const isDevEnvironment = process.env.NODE_ENV !== 'production'
 const Dotenv = require('dotenv-webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { RetryChunkLoadPlugin } = require('webpack-retry-chunk-load-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+// const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
@@ -56,14 +56,13 @@ module.exports = {
     new RetryChunkLoadPlugin({
       maxRetries: 3
     }),
-    new HtmlWebpackPlugin({
-      template: 'public/index.html'
-    }),
+    // new HtmlWebpackPlugin({
+    //   template: 'public/index.html'
+    // }),
     new CopyWebpackPlugin({
       patterns: [
         { from: 'public/assets', to: 'assets' }
       ]
-    }
-    )
+    })
   ]
 }

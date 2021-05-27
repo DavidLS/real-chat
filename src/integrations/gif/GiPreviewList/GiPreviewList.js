@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import styles from './GiPreviewList.module.css'
 
-const GIPHY_API_KEY = process.env.GIPHY_API_KEY
+const GIPHY_API_KEY = 'Bg9xdRCBtHb3O5hZgFshcX3dtnN30u14'
 const GIPHY_API_SEARCH_URL = `https://api.giphy.com/v1/gifs/search?api_key=${GIPHY_API_KEY}&limit=8`
 
 const GifPreviewBlock = ({ gif }) => {

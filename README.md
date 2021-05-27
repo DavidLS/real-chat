@@ -1,6 +1,6 @@
 # Real Chat App
 
-Realtime chat application. With auto-generated avatars images and giphy integrations.
+Realtime chat application. With auto-generated avatar images and giphy integration.
 
 ## Demo
 

@@ -64,7 +64,7 @@ const MessageForm = ({ handleSendImage, handleSendText, handleTyping }) => {
         />
         <Popover
           isOpen={isPopoverOpen}
-          positions={['top']} // preferred positions by priority
+          positions={['top']}
           content={<GiPreviewList handleClick={handleImageClick} query={query}/>}
           align="left"
           onClickOutside={cleanForm}

@@ -1,19 +1,15 @@
-const path = require('path')
+// const path = require('path')
 const isDevEnvironment = process.env.NODE_ENV !== 'production'
 
 const Dotenv = require('dotenv-webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { RetryChunkLoadPlugin } = require('webpack-retry-chunk-load-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   mode: 'development',
   entry: './index.js',
-  output: {
-    path: path.resolve(__dirname, 'public'),
-    filename: 'main.js',
-    publicPath: '/'
-    // chunkFilename: '[name].[chunkhash].js.chunk.'
-  },
   devServer: {
     port: '9500',
     contentBase: ['./public'],
@@ -59,6 +55,15 @@ module.exports = {
     }),
     new RetryChunkLoadPlugin({
       maxRetries: 3
-    })
+    }),
+    new HtmlWebpackPlugin({
+      template: 'public/index.html'
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'public/assets', to: 'assets' }
+      ]
+    }
+    )
   ]
 }

@@ -3,6 +3,7 @@ const isDevEnvironment = process.env.NODE_ENV !== 'production'
 
 const Dotenv = require('dotenv-webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const { RetryChunkLoadPlugin } = require('webpack-retry-chunk-load-plugin')
 
 module.exports = {
   mode: 'development',
@@ -10,7 +11,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'public'),
     filename: 'main.js',
-    publicPath: '/'
+    publicPath: './'
+    // chunkFilename: '[name].[chunkhash].js.chunk.'
   },
   devServer: {
     port: '9500',
@@ -54,6 +56,9 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: isDevEnvironment ? '[name].css' : '[name].[hash].css',
       chunkFilename: isDevEnvironment ? '[id].css' : '[id].[hash].css'
+    }),
+    new RetryChunkLoadPlugin({
+      maxRetries: 3
     })
   ]
 }

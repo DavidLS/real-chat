@@ -29,6 +29,7 @@
     "babel-loader": "^8.2.2",
     "copy-webpack-plugin": "^9.0.0",
     "css-loader": "^5.2.6",
+    "dotenv-webpack": "^7.0.2",
     "eslint": "^7.27.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-standard": "^16.0.2",
@@ -47,7 +48,6 @@
   },
   "dependencies": {
     "date-fns": "^2.21.3",
-    "dotenv-webpack": "^7.0.2",
     "react": "^17.0.2",
     "react-autosize-textarea": "^7.1.0",
     "react-dom": "^17.0.2",

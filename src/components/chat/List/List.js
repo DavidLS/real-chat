@@ -7,12 +7,10 @@ const List = ({ messages }) => {
   const messagesRef = useRef()
 
   useEffect(() => {
-    if (messagesRef) {
-      messagesRef.current.addEventListener('DOMNodeInserted', event => {
-        const { currentTarget: target } = event
-        target.scroll({ top: target.scrollHeight, behavior: 'smooth' })
-      })
-    }
+    messagesRef.current.addEventListener('DOMNodeInserted', event => {
+      const { currentTarget: target } = event
+      target.scroll({ top: target.scrollHeight, behavior: 'smooth' })
+    })
   }, [])
 
   return (

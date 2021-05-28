@@ -14,9 +14,9 @@ const useQuery = () => new URLSearchParams(useLocation().search)
 
 const Chat = () => {
   const userName = useQuery().get('username')
+  const history = useHistory()
 
   if (!userName) {
-    const history = useHistory()
     history.push('/')
   }
 

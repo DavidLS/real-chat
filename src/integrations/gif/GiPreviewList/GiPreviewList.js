@@ -27,7 +27,15 @@ const GiPreviewList = ({ query, handleClick }) => {
           setError(true)
         }
       }
-      getGifs()
+
+      let cancel = false
+      setTimeout(() => {
+        if (!cancel) {
+          getGifs()
+        }
+      }, 500)
+
+      return () => { cancel = true }
     },
     [query])
 
@@ -39,16 +47,16 @@ const GiPreviewList = ({ query, handleClick }) => {
         ? <div><p>We are sorry! Please try again later</p></div>
         : gifList?.map(
           (gif) => <div
-                    className={styles.GiPreviewItem}
-                    key={`gif_preview_${gif.id}`}
-                    onClick={(event) => {
-                      handleClick({ event: event, gif: gif })
-                    }}
-                  >
-                    <GifPreviewBlock
-                      gif={gif}
-                    />
-                  </div>
+            className={styles.GiPreviewItem}
+            key={`gif_preview_${gif.id}`}
+            onClick={() => {
+              handleClick({ gif })
+            }}
+          >
+            <GifPreviewBlock
+              gif={gif}
+            />
+          </div>
         )
       }
     </div>

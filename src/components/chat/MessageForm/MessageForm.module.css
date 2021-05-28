@@ -7,6 +7,11 @@
   font-family: Arial;
   width: 100%;
   padding: 12px;
+  outline: none;
+}
+
+.MessageFormForm:focus-within{
+  border: solid 2px #FF8200;
 }
 
 .MessageFormForm {
@@ -14,10 +19,11 @@
   border-radius: 4px;
   display: flex;
   justify-content: space-between;
+  overflow: hidden;
 }
 
 .MessageFormSubmit{
   border:none; 
   padding: 0px 16px;
-  background-color:inherit
+  background-color:inherit;
 }

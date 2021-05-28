@@ -20,5 +20,6 @@
 
 .MessageBlockContentTitle span{
   font-size: 12px;
+  padding-left: 4px;
   color: #969696
 }

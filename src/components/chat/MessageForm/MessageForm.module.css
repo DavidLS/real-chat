@@ -10,6 +10,11 @@
   outline: none;
 }
 
+.MessageFormTextArea::placeholder {
+  color: #bbbbbb;
+  opacity: 1;
+}
+
 .MessageFormForm:focus-within{
   border: solid 2px #FF8200;
 }

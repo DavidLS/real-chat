@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Popover } from 'react-tiny-popover'
 import TextareaAutosize from 'react-autosize-textarea'
-import GiPreviewList from '../../../integrations/gif/GiPreviewList'
+import GifsPreviewList from '../../../integrations/gif/GifsPreviewList'
 
 import styles from './MessageForm.module.css'
 
@@ -65,7 +65,7 @@ const MessageForm = ({ handleSendImage, handleSendText, handleTyping }) => {
         <Popover
           isOpen={isPopoverOpen}
           positions={['top']}
-          content={<GiPreviewList handleClick={handleImageClick} query={query}/>}
+          content={<GifsPreviewList handleClick={handleImageClick} query={query}/>}
           align="left"
           onClickOutside={cleanForm}
         >

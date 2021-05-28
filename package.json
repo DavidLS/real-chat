@@ -11,9 +11,8 @@
     "type": "git",
     "url": "git+https://github.com/DavidLS/real-chat.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["react", "socket.io", "realtime", "chat"],
+  "author": "David Lischinsky <davidelischinsky@gmail.com>",
   "bugs": {
     "url": "https://github.com/DavidLS/real-chat/issues"
   },
